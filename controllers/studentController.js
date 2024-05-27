@@ -1,4 +1,4 @@
-const Student = require('../models/student');
+const Student = requiree('../models/student');
 # nothing
 exports.listStudents = async (req, res) => {
     try {
