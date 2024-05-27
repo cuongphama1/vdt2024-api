@@ -1,28 +1,36 @@
-name: CI
+name: Continuous Integration
 
 on:
+  pull_request: 
+    branches: 
+      - main 
   push:
-    branches:
-      - '**'
-  pull_request:
-    branches:
-      - main
+    branches: 
+      - '*'
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
+    services:
+      mongodb:
+        image: mongo:latest
+        ports:
+          - 27017:27017
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
 
-    - name: Install dependencies
-      run: npm install
-
-    - name: Run tests
-      run: npm test
+      - name: Install dependencies
+        run: npm install
+        working-directory: .
+        
+      - name: Run unit tests
+        run: npm test
+        working-directory: .
