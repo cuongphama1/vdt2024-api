@@ -1,5 +1,5 @@
 const Student = require('../models/student');
-
+# nothing
 exports.listStudents = async (req, res) => {
     try {
         const students = await Student.find();
