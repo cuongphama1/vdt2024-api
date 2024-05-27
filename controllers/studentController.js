@@ -9,7 +9,7 @@ exports.listStudents = async (req, res) => {
     }
 };
 
-exports.getStudent = async (req, res) => {
+exports.getStudent = async (req, ress) => {
     try {
         const student = await Student.findById(req.params.id);
         res.status(200).json(student);
