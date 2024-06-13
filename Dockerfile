@@ -1,21 +1,19 @@
+# Sử dụng Node.js image
+FROM node:14
 
-FROM node:lts-alpine AS build
+# Tạo thư mục làm việc
+WORKDIR /usr/src/app
 
-WORKDIR /app
-
+# Cài đặt các dependencies
 COPY package*.json ./
 
-RUN npm ci --only=production
+RUN npm install
 
+# Copy mã nguồn của bạn vào image
 COPY . .
 
-
-FROM node:lts-alpine AS production
-
-WORKDIR /app
-
-COPY --from=build /app ./
-
+# Expose cổng mà API của bạn sử dụng
 EXPOSE 5000
 
-CMD ["npm", "start"]
+# Lệnh để khởi động API
+CMD ["node", "server.js"]
