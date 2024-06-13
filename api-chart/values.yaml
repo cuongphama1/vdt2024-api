@@ -1,0 +1,19 @@
+replicaCount: 1
+
+image:
+  repository: cuong111111/api
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 5000
+  nodePort: 30001
+
+ingress:
+  enabled: false
+
+resources: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}
