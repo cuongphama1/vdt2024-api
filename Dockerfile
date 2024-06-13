@@ -1,19 +1,22 @@
-# Sử dụng Node.js image
+# Dockerfile for API Server
+
+# Sử dụng image node ổn định nhất
 FROM node:14
 
-# Tạo thư mục làm việc
-WORKDIR /usr/src/app
+# Tạo thư mục làm việc trong container
+WORKDIR /app
 
-# Cài đặt các dependencies
-COPY package*.json ./
+# Sao chép package.json và package-lock.json vào thư mục làm việc
+COPY server/package*.json ./
 
+# Cài đặt các dependencies của server
 RUN npm install
 
-# Copy mã nguồn của bạn vào image
-COPY . .
+# Sao chép toàn bộ mã nguồn server vào thư mục làm việc
+COPY server .
 
-# Expose cổng mà API của bạn sử dụng
+# Expose cổng 5000 để có thể truy cập API từ bên ngoài
 EXPOSE 5000
 
-# Lệnh để khởi động API
+# Khởi động server
 CMD ["node", "server.js"]

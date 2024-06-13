@@ -1,24 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "api-chart.fullname" . }}
+  name: {{ include "my-api.fullname" . }}
   labels:
-    {{- include "api-chart.labels" . | nindent 4 }}
+    app: {{ include "my-api.name" . }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.deployment.replicaCount }}
   selector:
     matchLabels:
-      {{- include "api-chart.selectorLabels" . | nindent 6 }}
+      app: {{ include "my-api.name" . }}
   template:
     metadata:
       labels:
-        {{- include "api-chart.selectorLabels" . | nindent 8 }}
+        app: {{ include "my-api.name" . }}
     spec:
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: "{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}"
+          imagePullPolicy: {{ .Values.deployment.image.pullPolicy }}
           ports:
             - containerPort: 5000
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
