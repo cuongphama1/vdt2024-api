@@ -3,16 +3,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "api-chart.fullname" . }}
+  name: {{ include "Chart.fullname" . }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ include "api-chart.name" . }}
+      app: {{ include "Chart.name" . }}
   template:
     metadata:
       labels:
-        app: {{ include "api-chart.name" . }}
+        app: {{ include "Chart.name" . }}
     spec:
       containers:
         - name: {{ .Chart.Name }}
