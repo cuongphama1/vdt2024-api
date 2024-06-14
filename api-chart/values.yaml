@@ -1,19 +1,14 @@
-replicaCount: 1
+# Cấu hình cho Deployment
+deployment:
+  replicaCount: 1
+  image:
+    repository: cuong111111/api
+    tag: latest
+    pullPolicy: IfNotPresent
 
-image:
-  repository: cuong111111/api
-  tag: latest
-  pullPolicy: IfNotPresent
-
+# Cấu hình cho Service
 service:
-  type: NodePort
+  type: ClusterIP
   port: 5000
-  nodePort: 30001
 
-ingress:
-  enabled: false
 
-resources: {}
-nodeSelector: {}
-tolerations: []
-affinity: {}

@@ -1,7 +1,7 @@
 # Dockerfile for API Server
 
 # Sử dụng image node ổn định nhất
-FROM node:14
+FROM node:16
 
 # Tạo thư mục làm việc trong container
 WORKDIR /app
