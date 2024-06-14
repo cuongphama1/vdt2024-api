@@ -1,4 +1,0 @@
-apiVersion: v2
-name: my-api
-description: A Helm chart for deploying my API
-version: 0.1.0

@@ -1,0 +1,7 @@
+# api-chart/Chart.yaml
+
+apiVersion: v2
+name: api-chart
+description: A Helm chart for deploying API service
+version: 0.1.0
+appVersion: 1.0.0
