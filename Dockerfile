@@ -7,13 +7,13 @@ FROM node:14
 WORKDIR /app
 
 # Sao chép package.json và package-lock.json vào thư mục làm việc
-COPY server/package*.json ./
+COPY package*.json ./
 
 # Cài đặt các dependencies của server
 RUN npm install
 
 # Sao chép toàn bộ mã nguồn server vào thư mục làm việc
-COPY server .
+COPY . .
 
 # Expose cổng 5000 để có thể truy cập API từ bên ngoài
 EXPOSE 5000
