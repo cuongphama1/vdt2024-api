@@ -6,8 +6,7 @@ image:
   pullPolicy: IfNotPresent
 
 service:
-  type: ClusterIP
-  port: 5000
+  nodePort: 30002
 
 mongodb:
   host: mongo
