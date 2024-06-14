@@ -1,25 +1,26 @@
-# api-chart/templates/deployment.yaml
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "Chart.fullname" . }}
+  name: {{ .Chart.Name }}
+  labels:
+    app: {{ .Chart.Name }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "Chart.name" . }}
+      app: {{ .Chart.Name }}
   template:
     metadata:
       labels:
-        app: {{ include "Chart.name" . }}
+        app: {{ .Chart.Name }}
     spec:
+      restartPolicy: Always
       containers:
-        - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - containerPort: 5000
-          env:
-            - name: MONGO_URL
-              value: "mongodb://{{ .Values.mongodb.host }}:{{ .Values.mongodb.port }}/{{ .Values.mongodb.database }}"
+      - name: {{ .Chart.Name }}
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
+        env:
+          - name: MONGO_URL
+            value: "mongodb://{{ .Values.mongodb.host }}:{{ .Values.mongodb.port }}/{{ .Values.mongodb.database }}"
