@@ -8,7 +8,5 @@ image:
 service:
   nodePort: 30002
 
-mongodb:
-  host: mongo
-  port: 27017
-  database: vdt2024
+mongo:
+  MONO_URI: "mongodb+srv://cuongphamhsgs:cuongno13@cluster0.hcdxxxm.mongodb.net/vdt2024?retryWrites=true&w=majority&appName=Cluster0"
