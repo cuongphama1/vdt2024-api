@@ -23,4 +23,4 @@ spec:
         - containerPort: 5000
         env:
           - name: MONGO_URL
-            value: "mongodb://{{ .Values.mongodb.host }}:{{ .Values.mongodb.port }}/{{ .Values.mongodb.database }}"
+            value: "mongodb+srv://cuongphamhsgs:cuongno13@cluster0.hcdxxxm.mongodb.net/vdt2024?retryWrites=true&w=majority&appName=Cluster0"
