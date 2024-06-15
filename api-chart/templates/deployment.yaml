@@ -22,5 +22,5 @@ spec:
         ports:
         - containerPort: 5000
         env:
-          - name: MONGO_URL
+          - name: MONGO_URI
             value: "mongodb+srv://cuongphamhsgs:cuongno13@cluster0.hcdxxxm.mongodb.net/vdt2024?retryWrites=true&w=majority&appName=Cluster0"
