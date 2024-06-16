@@ -10,7 +10,7 @@ app.use(cors({
 }))
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://mongo:27017/vdt2024')
+mongoose.connect(process.env.MONGO_URL)
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log(err));
 
