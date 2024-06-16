@@ -2,7 +2,7 @@
 
 image:
   repository: cuong111111/api
-  tag: "v1.0"
+  tag: "v1.1"
   pullPolicy: IfNotPresent
 
 service:
